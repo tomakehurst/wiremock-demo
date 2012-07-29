@@ -1,6 +1,5 @@
-package com.github.tomakehurst.testtemplate;
+package com.github.tomakehurst;
 
-import com.github.tomakehurst.TwitterClient;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,13 +8,25 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class TwitterClientTest {
+public class CompleteTwitterClientTest {
 
     @Rule
     public WireMockRule wireMockRule = new WireMockRule();
 
     @Test
     public void shouldReturnFirstTweetTextInResults() {
+        stubFor(get(urlEqualTo(SEARCH_RELATIVE_URL)).willReturn(
+                aResponse()
+                        .withStatus(200)
+                        .withBody(CONTENT)));
+
+        TwitterClient twitterClient = new TwitterClient("http://localhost:8080");
+        String tweet = twitterClient.getSirBonarsLatestTweet();
+
+        assertThat(tweet, is("Stubbed tweet text"));
+
+        verify(getRequestedFor(urlMatching(".*search.*")).withHeader("Accept", equalTo("application/json")));
+
     }
 
     private static final String SEARCH_RELATIVE_URL = "/search.json?q=from:sirbonar&result_type=recent&rpp=1";
