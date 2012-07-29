@@ -13,7 +13,7 @@ public class TwitterClientTest {
 
     @Test
     public void shouldReturnFirstTweetTextInResults() {
-        
+
     }
 
     private static final String SEARCH_RELATIVE_URL = "/search.json?q=from:sirbonar&result_type=recent&rpp=1";
@@ -46,7 +46,7 @@ public class TwitterClientTest {
                     "               \"profile_image_url\": \"http://a0.twimg.com/profile_images/525192091/Bonar_normal.jpg\",\n" +
                     "               \"profile_image_url_https\": \"https://si0.twimg.com/profile_images/525192091/Bonar_normal.jpg\",\n" +
                     "               \"source\": \"<a href=\"http://www.tweetdeck.com\" rel=\"nofollow\">TweetDeck</a>\",\n" +
-                    "               \"text\": \"I miss Brian's renditions of \"Swanee Ribber\", I must say.\",\n" +
+                    "               \"text\": \"Content configured inline\",\n" +
                     "               \"to_user\": null,\n" +
                     "               \"to_user_id\": 0,\n" +
                     "               \"to_user_id_str\": \"0\",\n" +
